@@ -25,7 +25,9 @@ try {
     execSync('sudo warp-cli --accept-tos registration new')
     execSync(`sudo warp-cli --accept-tos mode ${onlyDoH ? 'doh' : 'warp+doh'}`)
     execSync(`sudo warp-cli --accept-tos dns families ${familyMode}`)
-    execSync('sudo warp-cli --accept-tos connect')
+    const result = execSync('sudo warp-cli --accept-tos connect')
+
+    console.log(result.toString('utf-8'))
 
     // verify installation
     await wait(1000)

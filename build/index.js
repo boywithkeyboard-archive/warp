@@ -18889,7 +18889,8 @@ try {
     (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos registration new");
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos mode ${onlyDoH ? "doh" : "warp+doh"}`);
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos dns families ${familyMode}`);
-    (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos connect");
+    const result = (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos connect");
+    console.log(result.toString("utf-8"));
     await wait(1e3);
     const trace = await fetchTrace();
     if (trace.warp === "off") {
