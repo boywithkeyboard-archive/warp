@@ -5,7 +5,7 @@
 ```yaml
 uses: boywithkeyboard/warp@v1
 with:
-  familyMode: 'malware'
+  familyMode: malware
 ```
 
 ### Options
