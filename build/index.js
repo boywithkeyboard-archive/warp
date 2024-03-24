@@ -18868,6 +18868,13 @@ async function fetchTrace() {
   return obj;
 }
 
+// src/wait.ts
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 // src/index.ts
 try {
   async function action() {
@@ -18881,8 +18888,9 @@ try {
     (0, import_node_child_process.execSync)("sudo apt-get -y update && sudo apt-get install -y cloudflare-warp");
     (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos registration new");
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos mode ${onlyDoH ? "doh" : "warp+doh"}`);
-    (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos set-families-mode ${familyMode}`);
+    (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos dns families ${familyMode}`);
     (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos connect");
+    await wait(1e3);
     const trace = await fetchTrace();
     if (trace.warp === "off") {
       throw new Error("WARP could NOT be enabled!");

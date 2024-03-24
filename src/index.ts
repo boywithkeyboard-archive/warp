@@ -1,6 +1,7 @@
 import { getBooleanInput, getInput, setFailed } from '@actions/core'
 import { execSync } from 'node:child_process'
 import { fetchTrace } from './fetchTrace'
+import { wait } from './wait'
 
 try {
   async function action() {
@@ -23,10 +24,12 @@ try {
     // setup warp
     execSync('sudo warp-cli --accept-tos registration new')
     execSync(`sudo warp-cli --accept-tos mode ${onlyDoH ? 'doh' : 'warp+doh'}`)
-    execSync(`sudo warp-cli --accept-tos set-families-mode ${familyMode}`)
+    execSync(`sudo warp-cli --accept-tos dns families ${familyMode}`)
     execSync('sudo warp-cli --accept-tos connect')
 
     // verify installation
+    await wait(1000)
+
     const trace = await fetchTrace()
 
     if (trace.warp === 'off') {
