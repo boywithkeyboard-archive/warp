@@ -13,4 +13,4 @@ with:
 | Name | Description | Allowed Values | Default Value |
 | :--- | :--- | :--- | :--- |
 | `onlyDoH` | Use only DNS over HTTPS. | `true` / `false` | `false` |
-| `familyMode` | Block malware and/or NSFW content. | `off` / `malware` / `off` | `false` |
+| `familyMode` | Block malware and/or NSFW content. | `off` / `malware` / `off` | `off` |
