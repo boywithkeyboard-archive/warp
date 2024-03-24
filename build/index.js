@@ -18876,8 +18876,9 @@ try {
     if (/^off|malware|full$/.test(familyMode) === false) {
       throw new Error("Bad option: familyMode");
     }
-    (0, import_node_child_process.execSync)("sudo apt-get -y update");
-    (0, import_node_child_process.execSync)("sudo apt-get install -y cloudflare-warp");
+    (0, import_node_child_process.execSync)("curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg");
+    (0, import_node_child_process.execSync)('echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list');
+    (0, import_node_child_process.execSync)("sudo apt-get -y update && sudo apt-get install -y cloudflare-warp");
     (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos registration new");
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos mode ${onlyDoH ? "doh" : "warp+doh"}`);
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos set-families-mode ${familyMode}`);
