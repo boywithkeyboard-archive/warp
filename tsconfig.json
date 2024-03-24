@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ES2022",
+    "strict": true,
+    "noEmit": true,
+    "moduleResolution": "Bundler",
+    "rootDir": "src"
+  },
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
+}

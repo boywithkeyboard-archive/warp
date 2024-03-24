@@ -1,0 +1,24 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: publish
+        name: Publish Release
+        uses: boywithkeyboard/publisher@v3
+
+      - name: Bump Major Version
+        run: |
+          full="${{ steps.publish.outputs.tag_name }}"
+          short="${full:0:2}"
+          git tag $short -f
+          git push --tags -f

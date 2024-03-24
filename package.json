@@ -1,0 +1,16 @@
+{
+  "name": "@boywithkeyboard/warp",
+  "private": true,
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --format=cjs --platform=node --outfile=build/index.js",
+    "check": "tsc"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.30",
+    "esbuild": "^0.20.2",
+    "typescript": "^5.4.3"
+  }
+}
