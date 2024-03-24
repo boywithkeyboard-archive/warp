@@ -3,9 +3,10 @@
 ### Usage
 
 ```yaml
-uses: boywithkeyboard/warp@v1
-with:
-  familyMode: malware
+- name: Setup WARP
+  uses: boywithkeyboard/warp@v1
+  with:
+    familyMode: malware
 ```
 
 ### Options
