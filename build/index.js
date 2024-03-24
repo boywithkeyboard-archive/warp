@@ -18855,6 +18855,7 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 // src/index.ts
 var import_core = __toESM(require_core());
 var import_node_child_process = require("node:child_process");
+var import_node_os = require("node:os");
 
 // src/fetchTrace.ts
 async function fetchTrace() {
@@ -18883,14 +18884,16 @@ try {
     if (/^off|malware|full$/.test(familyMode) === false) {
       throw new Error("Bad option: familyMode");
     }
+    if ((0, import_node_os.platform)() !== "linux") {
+      throw new Error("This action is only available for Linux!");
+    }
     (0, import_node_child_process.execSync)("curl -fsSL https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg");
     (0, import_node_child_process.execSync)('echo "deb [signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list');
     (0, import_node_child_process.execSync)("sudo apt-get -y update && sudo apt-get install -y cloudflare-warp");
     (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos registration new");
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos mode ${onlyDoH ? "doh" : "warp+doh"}`);
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos dns families ${familyMode}`);
-    const result = (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos connect");
-    console.log(result.toString("utf-8"));
+    (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos connect");
     await wait(1e3);
     const trace = await fetchTrace();
     if (trace.warp === "off") {

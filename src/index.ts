@@ -1,5 +1,6 @@
 import { getBooleanInput, getInput, setFailed } from '@actions/core'
 import { execSync } from 'node:child_process'
+import { platform } from 'node:os'
 import { fetchTrace } from './fetchTrace'
 import { wait } from './wait'
 
@@ -10,6 +11,10 @@ try {
 
     if (/^off|malware|full$/.test(familyMode) === false) {
       throw new Error('Bad option: familyMode')
+    }
+
+    if (platform() !== 'linux') {
+      throw new Error('This action is only available for Linux!')
     }
 
     // add cloudflare gpg key
@@ -25,9 +30,7 @@ try {
     execSync('sudo warp-cli --accept-tos registration new')
     execSync(`sudo warp-cli --accept-tos mode ${onlyDoH ? 'doh' : 'warp+doh'}`)
     execSync(`sudo warp-cli --accept-tos dns families ${familyMode}`)
-    const result = execSync('sudo warp-cli --accept-tos connect')
-
-    console.log(result.toString('utf-8'))
+    execSync('sudo warp-cli --accept-tos connect')
 
     // verify installation
     await wait(1000)
