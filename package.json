@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.10.1",
-    "cdn-cgi-trace": "^1.0.1",
+    "cdn-cgi-trace": "^1.1.0",
     "chalk": "^5.3.0"
   },
   "devDependencies": {

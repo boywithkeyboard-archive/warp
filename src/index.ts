@@ -36,7 +36,7 @@ try {
     // verify installation
     await wait(1000)
 
-    const trace = await fetchTrace()
+    const trace = await fetchTrace('cloudflare.com')
 
     if (trace.warp === 'off') {
       throw new Error('WARP could NOT be enabled!')
