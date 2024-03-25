@@ -1,7 +1,8 @@
 import { getBooleanInput, getInput, setFailed } from '@actions/core'
+import { fetchTrace } from 'cdn-cgi-trace'
+import chalk from 'chalk'
 import { execSync } from 'node:child_process'
 import { platform } from 'node:os'
-import { fetchTrace } from './fetchTrace'
 import { wait } from './wait'
 
 try {
@@ -41,7 +42,7 @@ try {
       throw new Error('WARP could NOT be enabled!')
     }
 
-    console.log('WARP has been successfully activated!')
+    console.log(chalk.greenBright('WARP was successfully enabled!'))
   }
 
   action()
