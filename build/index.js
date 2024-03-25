@@ -69,21 +69,21 @@ var require_utils = __commonJS({
 var require_command = __commonJS({
   "node_modules/@actions/core/lib/command.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+      Object.defineProperty(o2, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    } : function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      o[k2] = m[k];
+      o2[k2] = m[k];
     });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
-      Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
-      o["default"] = v;
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o2, v) {
+      Object.defineProperty(o2, "default", { enumerable: true, value: v });
+    } : function(o2, v) {
+      o2["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
       if (mod && mod.__esModule)
@@ -489,21 +489,21 @@ var init_esm_node = __esm({
 var require_file_command = __commonJS({
   "node_modules/@actions/core/lib/file-command.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+      Object.defineProperty(o2, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    } : function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      o[k2] = m[k];
+      o2[k2] = m[k];
     });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
-      Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
-      o["default"] = v;
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o2, v) {
+      Object.defineProperty(o2, "default", { enumerable: true, value: v });
+    } : function(o2, v) {
+      o2["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
       if (mod && mod.__esModule)
@@ -4271,15 +4271,15 @@ var require_util2 = __commonJS({
       let reader;
       try {
         reader = body.stream.getReader();
-      } catch (e2) {
-        errorSteps(e2);
+      } catch (e) {
+        errorSteps(e);
         return;
       }
       try {
         const result = await readAllBytes(reader);
         successSteps(result);
-      } catch (e2) {
-        errorSteps(e2);
+      } catch (e) {
+        errorSteps(e);
       }
     }
     var ReadableStream = globalThis.ReadableStream;
@@ -5737,8 +5737,8 @@ Content-Type: ${value.type || "application/octet-stream"}\r
       const successSteps = (data) => {
         try {
           promise.resolve(convertBytesToJSValue(data));
-        } catch (e2) {
-          errorSteps(e2);
+        } catch (e) {
+          errorSteps(e);
         }
       };
       if (object[kState].body == null) {
@@ -7408,7 +7408,7 @@ var require_client = __commonJS({
       let mod;
       try {
         mod = await WebAssembly.compile(Buffer.from(require_llhttp_simd_wasm(), "base64"));
-      } catch (e2) {
+      } catch (e) {
         mod = await WebAssembly.compile(Buffer.from(llhttpWasmData || require_llhttp_wasm(), "base64"));
       }
       return await WebAssembly.instantiate(mod, {
@@ -13205,8 +13205,8 @@ var require_fetch = __commonJS({
       let requestObject;
       try {
         requestObject = new Request(input, init);
-      } catch (e2) {
-        p.reject(e2);
+      } catch (e) {
+        p.reject(e);
         return p.promise;
       }
       const request = requestObject[kState];
@@ -13871,14 +13871,14 @@ var require_fetch = __commonJS({
             fetchParams.processRequestEndOfBody();
           }
         };
-        const processBodyError = (e2) => {
+        const processBodyError = (e) => {
           if (isCancelled(fetchParams)) {
             return;
           }
-          if (e2.name === "AbortError") {
+          if (e.name === "AbortError") {
             fetchParams.controller.abort();
           } else {
-            fetchParams.controller.terminate(e2);
+            fetchParams.controller.terminate(e);
           }
         };
         requestBody = async function* () {
@@ -14597,8 +14597,8 @@ var require_util4 = __commonJS({
         }
       })();
     }
-    function fireAProgressEvent(e2, reader) {
-      const event = new ProgressEvent(e2, {
+    function fireAProgressEvent(e, reader) {
+      const event = new ProgressEvent(e, {
         bubbles: false,
         cancelable: false
       });
@@ -15166,8 +15166,8 @@ var require_cache = __commonJS({
         let errorData = null;
         try {
           this.#batchCacheOperations(operations);
-        } catch (e2) {
-          errorData = e2;
+        } catch (e) {
+          errorData = e;
         }
         queueMicrotask(() => {
           if (errorData === null) {
@@ -15246,8 +15246,8 @@ var require_cache = __commonJS({
         let errorData = null;
         try {
           this.#batchCacheOperations(operations);
-        } catch (e2) {
-          errorData = e2;
+        } catch (e) {
+          errorData = e;
         }
         queueMicrotask(() => {
           if (errorData === null) {
@@ -15285,8 +15285,8 @@ var require_cache = __commonJS({
         let requestResponses;
         try {
           requestResponses = this.#batchCacheOperations(operations);
-        } catch (e2) {
-          errorData = e2;
+        } catch (e) {
+          errorData = e;
         }
         queueMicrotask(() => {
           if (errorData === null) {
@@ -15421,10 +15421,10 @@ var require_cache = __commonJS({
             resultList.push([operation.request, operation.response]);
           }
           return resultList;
-        } catch (e2) {
+        } catch (e) {
           this.#relevantRequestResponseList.length = 0;
           this.#relevantRequestResponseList = backupCache;
-          throw e2;
+          throw e;
         }
       }
       /**
@@ -16394,8 +16394,8 @@ var require_util7 = __commonJS({
     function isClosed(ws) {
       return ws[kReadyState] === states.CLOSED;
     }
-    function fireEvent(e2, target, eventConstructor = Event, eventInitDict) {
-      const event = new eventConstructor(e2, eventInitDict);
+    function fireEvent(e, target, eventConstructor = Event, eventInitDict) {
+      const event = new eventConstructor(e, eventInitDict);
       target.dispatchEvent(event);
     }
     function websocketMessageReceived(ws, type, data) {
@@ -16965,8 +16965,8 @@ var require_websocket = __commonJS({
         let urlRecord;
         try {
           urlRecord = new URL(url, baseURL);
-        } catch (e2) {
-          throw new DOMException2(e2, "SyntaxError");
+        } catch (e) {
+          throw new DOMException2(e, "SyntaxError");
         }
         if (urlRecord.protocol === "http:") {
           urlRecord.protocol = "ws:";
@@ -17457,7 +17457,7 @@ var require_undici = __commonJS({
 var require_lib = __commonJS({
   "node_modules/@actions/http-client/lib/index.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
       var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -17466,16 +17466,16 @@ var require_lib = __commonJS({
           return m[k];
         } };
       }
-      Object.defineProperty(o, k2, desc);
-    } : function(o, m, k, k2) {
+      Object.defineProperty(o2, k2, desc);
+    } : function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      o[k2] = m[k];
+      o2[k2] = m[k];
     });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
-      Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
-      o["default"] = v;
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o2, v) {
+      Object.defineProperty(o2, "default", { enumerable: true, value: v });
+    } : function(o2, v) {
+      o2["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
       if (mod && mod.__esModule)
@@ -17499,15 +17499,15 @@ var require_lib = __commonJS({
         function fulfilled(value) {
           try {
             step(generator.next(value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function rejected(value) {
           try {
             step(generator["throw"](value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function step(result) {
@@ -18091,15 +18091,15 @@ var require_auth = __commonJS({
         function fulfilled(value) {
           try {
             step(generator.next(value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function rejected(value) {
           try {
             step(generator["throw"](value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function step(result) {
@@ -18195,15 +18195,15 @@ var require_oidc_utils = __commonJS({
         function fulfilled(value) {
           try {
             step(generator.next(value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function rejected(value) {
           try {
             step(generator["throw"](value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function step(result) {
@@ -18293,15 +18293,15 @@ var require_summary = __commonJS({
         function fulfilled(value) {
           try {
             step(generator.next(value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function rejected(value) {
           try {
             step(generator["throw"](value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function step(result) {
@@ -18577,21 +18577,21 @@ var require_summary = __commonJS({
 var require_path_utils = __commonJS({
   "node_modules/@actions/core/lib/path-utils.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+      Object.defineProperty(o2, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    } : function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      o[k2] = m[k];
+      o2[k2] = m[k];
     });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
-      Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
-      o["default"] = v;
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o2, v) {
+      Object.defineProperty(o2, "default", { enumerable: true, value: v });
+    } : function(o2, v) {
+      o2["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
       if (mod && mod.__esModule)
@@ -18627,21 +18627,21 @@ var require_path_utils = __commonJS({
 var require_core = __commonJS({
   "node_modules/@actions/core/lib/core.js"(exports2) {
     "use strict";
-    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o, m, k, k2) {
+    var __createBinding = exports2 && exports2.__createBinding || (Object.create ? function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      Object.defineProperty(o, k2, { enumerable: true, get: function() {
+      Object.defineProperty(o2, k2, { enumerable: true, get: function() {
         return m[k];
       } });
-    } : function(o, m, k, k2) {
+    } : function(o2, m, k, k2) {
       if (k2 === void 0)
         k2 = k;
-      o[k2] = m[k];
+      o2[k2] = m[k];
     });
-    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o, v) {
-      Object.defineProperty(o, "default", { enumerable: true, value: v });
-    } : function(o, v) {
-      o["default"] = v;
+    var __setModuleDefault = exports2 && exports2.__setModuleDefault || (Object.create ? function(o2, v) {
+      Object.defineProperty(o2, "default", { enumerable: true, value: v });
+    } : function(o2, v) {
+      o2["default"] = v;
     });
     var __importStar = exports2 && exports2.__importStar || function(mod) {
       if (mod && mod.__esModule)
@@ -18665,15 +18665,15 @@ var require_core = __commonJS({
         function fulfilled(value) {
           try {
             step(generator.next(value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function rejected(value) {
           try {
             step(generator["throw"](value));
-          } catch (e2) {
-            reject(e2);
+          } catch (e) {
+            reject(e);
           }
         }
         function step(result) {
@@ -18856,15 +18856,15 @@ Support boolean input list: \`true | True | TRUE | false | False | FALSE\``);
 var import_core = __toESM(require_core());
 
 // node_modules/cdn-cgi-trace/index.js
-async function e() {
-  let t = await (await fetch("https://1.1.1.1/cdn-cgi/trace")).text();
+async function o(i = "1.1.1.1") {
+  let t = await (await fetch(`https://${i}/cdn-cgi/trace`)).text();
   t.at(-1) === `
 ` && (t = t.slice(0, -1));
   let s = t.split(`
-`), i = {};
+`), n = {};
   for (let r = 0; r < s.length; r++)
-    i[s[r].split("=")[0]] = s[r].split("=")[1];
-  return i;
+    n[s[r].split("=")[0]] = s[r].split("=")[1];
+  return n;
 }
 
 // node_modules/chalk/source/vendor/ansi-styles/index.js
@@ -19386,7 +19386,7 @@ try {
     (0, import_node_child_process.execSync)(`sudo warp-cli --accept-tos dns families ${familyMode}`);
     (0, import_node_child_process.execSync)("sudo warp-cli --accept-tos connect");
     await wait(1e3);
-    const trace = await e();
+    const trace = await o("cloudflare.com");
     if (trace.warp === "off") {
       throw new Error("WARP could NOT be enabled!");
     }
