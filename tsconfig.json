@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "ES2022",
     "module": "ES2022",
+    "alwaysStrict": true,
     "strict": true,
     "noEmit": true,
     "moduleResolution": "Bundler",
